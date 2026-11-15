@@ -56,7 +56,7 @@
   function textNode(node) {
     if (protectedText(node.parentElement)) return;
     // The paused-agent warning renders the user-selected name in a separate strong node.
-    if (node.parentElement.matches('strong') && / is paused and will not start work on this task/.test(node.parentElement.parentElement.textContent)) return;
+    if (node.parentElement.matches('strong,.font-medium') && / is paused and will not start work on this task/.test(node.parentElement.parentElement.textContent)) return;
     const next = translate(node.nodeValue);
     if (next !== node.nodeValue) { node.nodeValue = next; count++; }
   }

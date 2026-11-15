@@ -37,12 +37,12 @@ test('keeps React-style nodes and event handlers intact across dynamic updates',
  const count=d.documentElement.dataset.paperclipKoTranslations;await wait();assert.equal(d.documentElement.dataset.paperclipKoTranslations,count);dom.window.close();
 });
 test('translates agent subpage navigation and split warnings while preserving entity names',async()=>{
- const dom=await setup('<nav aria-label="Example navigation"><a href="/EX/agents/alpha/runtime">Harness / Runtime</a></nav><a href="/EX/agents/beta/overview">Skills</a><p><strong>Alpha</strong> is paused and will not start work on this task until it is resumed. You can resume it from the task page after creating the task.</p><span>17<!-- --> agents</span>');
+ const dom=await setup('<nav aria-label="Example navigation"><a href="/EX/agents/alpha/runtime">Harness / Runtime</a></nav><a href="/EX/agents/beta/overview">Skills</a><p><span class="font-medium">Alpha</span> is paused and will not start work on this task until it is resumed<!-- -->. You can resume it from the task page after creating the task.</p><span>17<!-- --> agents</span>');
  const d=dom.window.document;
  assert.equal(d.querySelector('nav a').textContent,'에이전트 실행 환경');
  assert.equal(d.querySelectorAll('a')[1].textContent,'Skills');
  assert.match(d.querySelector('p').textContent,/Alpha 에이전트는 일시 중지/);
- assert.doesNotMatch(d.querySelector('span').textContent,/agents/);
+ assert.doesNotMatch(d.querySelector('body > span').textContent,/agents/);
  dom.window.close();
 });
 test('dictionary values are plain text and do not introduce executable markup',()=>{
