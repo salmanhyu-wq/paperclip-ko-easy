@@ -1,0 +1,1 @@
+{"name":"paperclip-ko-easy","version":"1.0.0","private":true,"description":"기존 Paperclip 서버를 유지하는 쉬운 한국어 화면 패치","scripts":{"test":"node --test test.mjs"},"devDependencies":{"jsdom":"^30.0.1"},"license":"MIT"}
